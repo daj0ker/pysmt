@@ -24,7 +24,6 @@ try:
 except ImportError:
     raise SolverAPINotFound
 
-
 from pysmt.solvers.solver import (IncrementalTrackingSolver,
                                   Converter, SolverOptions)
 from pysmt.solvers.smtlib import SmtLibBasicSolver, SmtLibIgnoreMixin
@@ -74,6 +73,8 @@ class BoolectorSolver(IncrementalTrackingSolver,
                       SmtLibBasicSolver, SmtLibIgnoreMixin):
 
     LOGICS = [QF_BV, QF_UFBV, QF_ABV, QF_AUFBV, QF_AX]
+    OptionsClass = BoolectorOptions
+
     OptionsClass = BoolectorOptions
 
     def __init__(self, environment, logic, **options):
@@ -167,6 +168,8 @@ class BoolectorSolver(IncrementalTrackingSolver,
 
     def _exit(self):
         del self.btor
+
+# EOC BoolectorSolver
 
 
 class BTORConverter(Converter, DagWalker):

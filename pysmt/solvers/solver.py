@@ -84,6 +84,9 @@ class SolverOptions(object):
 
 # EOC SolverOptions
 
+    def as_dict(self):
+        return dict((name, getattr(self, name))
+                    for name, _ in self.VALID_OPTIONS)
 
 class Solver(object):
     """Represents a generic SMT Solver."""
@@ -222,7 +225,6 @@ class Solver(object):
     def add_assertion(self, formula, named=None):
         """Add assertion to the solver."""
         raise NotImplementedError
-
 
     def solve(self, assumptions=None):
         """Returns the satisfiability value of the asserted formulas.

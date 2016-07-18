@@ -131,6 +131,7 @@ class MathSAT5Model(Model):
         """Returns whether the model contains a value for 'x'."""
         return x in (v for v, _ in self)
 
+<<<<<<< HEAD
 # EOC MathSAT5Model
 
 
@@ -1356,3 +1357,5 @@ class MSatBoolUFRewriter(IdentityDagWalker):
             stack = tmp
         res = stack[0]
         return res
+
+# EOC MSatBoolUFRewriter
